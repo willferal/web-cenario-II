@@ -4,11 +4,6 @@ import copiei from "./assets/images/copiei.png";
 import "./Home.css";
 
 
-
-
-
-
-
 const Faq = props =>{
     return(
     <div class="container-fluid">
