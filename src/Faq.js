@@ -11,7 +11,7 @@ import "./Home.css";
 
 const Faq = props =>{
     return(
-    <div clas="container-fluid">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-sm-2"></div>
             <div class="interface col-sm-8 well well-md">
