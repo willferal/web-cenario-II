@@ -1,6 +1,7 @@
 import React from "react";
 import "./Faq.css";
 import copiei from "./assets/images/copiei.png";
+import "./Home.css";
 
 
 
@@ -10,7 +11,7 @@ import copiei from "./assets/images/copiei.png";
 
 const Faq = props =>{
     return(
-    <div class="container-fluid">
+    <div clas="container-fluid">
         <div class="row">
             <div class="col-sm-2"></div>
             <div class="interface col-sm-8 well well-md">
