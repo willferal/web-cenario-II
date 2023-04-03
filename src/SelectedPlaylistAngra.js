@@ -8,11 +8,11 @@ const SelectedPlaylistAngra = props => {
     const musicas = [{
         nome:"Temple of Hate",
         capa: Angra ,
-        audio: "./assets/musics/The Temple of Hate.mp3"
+        audio: "/assets/musics/temple-of-hate.mp3"
     },{
         nome:"Spread your fire",
         capa: Angra,
-
+        audio: ""
     }
 ]
 
@@ -22,8 +22,9 @@ const SelectedPlaylistAngra = props => {
         <li>
             <div className="play well well-sm">
                 <img className="playlists" src={musicas.capa} alt={musicas.nome} />
-                <h4>{musicas.nome}</h4>
-                <audio><source src={musicas.audio} type="audio/mp3"></source></audio>
+                <h6>{musicas.nome}</h6>
+                <audio id="audio" src="{musicas.audio}" preload="preload"></audio>
+                <button onclick="document.getElementById('audio').play()">Tocar</button>
             </div>
         </li>
     </ul>
