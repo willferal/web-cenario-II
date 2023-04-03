@@ -10,7 +10,12 @@
     align-items: center;
 }
 .play{
-    align-items: center;
+    border-color: #2a3b5b;
+    background-color: #2a3b5b;
+}
+.play:hover{
+    border-color: #223049;
+    background-color: #223049;
 }
 
 .playlists{

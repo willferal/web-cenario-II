@@ -5,6 +5,7 @@ import Home from './Home';
 import Faq from './Faq';
 import NavBar from './NavBar';
 import Playlist from './Playlist';
+import SelectedPlaylist from './SelectedPlaylist';
 
 function App() {
   return (
