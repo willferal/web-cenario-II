@@ -1,0 +1,15 @@
+[{
+    "nome": "Racionais",
+    "capa": "./assets/images/angra.png",
+    "musicas": ["nome"]
+},
+{
+    "nome": "a7x",
+    "capa": "./assets/images/angra.png",
+    "musicas": ["nome"]
+},
+{
+    "nome": "angra",
+    "capa": "./assets/images/angra.png",
+    "musicas": ["nome"]
+}]

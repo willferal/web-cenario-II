@@ -1,0 +1,24 @@
+.interface {
+    background-color: #1B263B;
+    border-color: #1B263B;
+    border-radius: 30px;
+    text-align: center;
+}
+
+#rowcenter{
+    text-align: center;
+    align-items: center;
+}
+.play{
+    align-items: center;
+}
+
+.playlists{
+    color: lightgrey;
+    font-size: large;
+    height: 100px;
+}
+
+h4{
+    color: beige;
+}
