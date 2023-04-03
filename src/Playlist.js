@@ -29,7 +29,7 @@ const Playlist = props => {
         (p) => 
             <li>
 
-                <Link to="/SelectedPlaylist">
+                <Link to="/SelectedPlaylistAngra">
                     <div className="play well well-sm">
                         <img className="playlists" src={p.capa} alt={p.nome} />
                         <h4>{p.nome}</h4>
