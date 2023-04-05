@@ -23,6 +23,11 @@
     vertical-align: middle;
     cursor: pointer;
 }
+.music:hover{
+    background-color: darkgray;
+}
+
+
 
 .playButton{
     max-width: 30px;

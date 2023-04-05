@@ -5,11 +5,22 @@ import playlists from "./Playlists.json"
 
 const SelectedPlaylist = props => {
     function tocar(id){
-        var musica  = play.musicas.find(i => i.id == id)
+        
+        var musica = null
+        
+        for(var i = 0;i<play.musicas.length;i++){
+            let music = play.musicas[i]
+            if(music.id == id){
+                document.getElementById(music.nome).style.backgroundColor = "darkgray"
+                musica = music
+            }else{
+                document.getElementById(music.nome).style.backgroundColor = "grey"
+            }
+        }
         if(musica != null){
             var a = document.getElementById('audio')
             var title = document.getElementById('title')
-
+            
             title.innerHTML = musica.nome
 
             a.src = musica.audio
@@ -20,15 +31,13 @@ const SelectedPlaylist = props => {
         }
     }
     
-    
-    
     const {id} = useParams();
 
     const play = playlists.find(p => p.id == id);
     const playMusic = play.musicas.map((m)=>
     
         <tr>
-            <div className="music" onClick={e =>  tocar(m.id)}>
+            <div id={m.nome} className="music" onClick={e =>  tocar(m.id)}>
                 <img className="playButton" src="/assets/images/play.png"></img>
                 <h6>{m.nome}</h6>
             </div>
