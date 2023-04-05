@@ -1,0 +1,47 @@
+.interface {
+    background-color: #1B263B;
+    border-color: #1B263B;
+    border-radius: 30px;
+    text-align: center;
+}
+
+.album-list{
+    width: 100%;
+
+}
+.music{
+    background-color: grey;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    display: flex;
+    margin-left: 2%;
+    margin-right: 2%;
+    width: 96%;
+    border: 3px #1B263B;
+    border-radius: 10px;
+    height: 40px;
+    vertical-align: middle;
+}
+
+.playButton{
+    max-width: 30px;
+    max-height: 90%;
+    margin-left: 10px;
+    margin-right: 20px;
+
+    
+}
+
+.playlists{
+    color: lightgrey;
+    font-size: large;
+    height: 100px;
+}
+
+h3{
+    color: beige;
+}
+
+.playMusic{
+    margin-top: 20px;
+}

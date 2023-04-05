@@ -5,9 +5,9 @@
     text-align: center;
 }
 
-#rowcenter{
-    text-align: center;
-    align-items: center;
+.rowcenter{
+    display: flex;
+    justify-content: center;
 }
 .play{
     border-color: #2a3b5b;
@@ -26,4 +26,8 @@
 
 h4{
     color: beige;
+}
+
+h1{
+    margin-left: 0px;
 }

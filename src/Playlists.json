@@ -1,15 +1,69 @@
 [{
+    "id": 0,
     "nome": "Racionais",
-    "capa": "./assets/images/angra.png",
-    "musicas": ["nome"]
+    "capa": "/assets/images/racionais.jpg",
+    "musicas": [{
+        "id": 0,
+        "nome":"musica1",
+        "audio": ""
+    },{
+        "id": 1,
+        "nome":"musica2",
+        "audio": ""
+    },{
+        "id": 2,
+        "nome":"musica3",
+        "audio": ""
+    }]
 },
 {
+    "id": 1,
     "nome": "a7x",
-    "capa": "./assets/images/angra.png",
-    "musicas": ["nome"]
+    "capa": "/assets/images/a7x.png",
+    "musicas": [{
+        "id": 0,
+        "nome":"musica1",
+        "audio": ""
+    },{
+        "id": 1,
+        "nome":"musica2",
+        "audio": ""
+    },{
+        "id": 2,
+        "nome":"musica3",
+        "audio": ""
+    }]
 },
 {
+    "id": 2,
     "nome": "angra",
-    "capa": "./assets/images/angra.png",
-    "musicas": ["nome"]
-}]
+    "capa": "/assets/images/angra.png",
+    "musicas": [{
+        "id":0,
+        "nome":"Temple of Hate",
+        "audio": "/assets/musics/temple-of-hate.mp3"
+    },{
+        "id":1,
+        "nome":"Spread your fire",
+        "audio": ""
+    }]
+},
+{
+    "id": 3,
+    "nome": "aleatorio",
+    "capa": "/assets/images/aleatorio.jpeg",
+    "musicas": [{
+        "id": 0,
+        "nome":"monterSA",
+        "audio": "/assets/musics/monsterSA.mp3"
+    },{
+        "id": 1,
+        "nome":"musica2",
+        "audio": ""
+    },{
+        "id": 2,
+        "nome":"musica3",
+        "audio": ""
+    }]
+}
+]
