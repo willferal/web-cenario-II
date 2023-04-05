@@ -5,13 +5,19 @@ import playlists from "./Playlists.json"
 
 const SelectedPlaylist = props => {
     function tocar(id){
-        var a = document.getElementById('audio')
-        var title = document.getElementById('title')
         var musica  = play.musicas.find(i => i.id == id)
-        title.innerHTML = musica.nome
-        console.log(musica.id+" "+musica.audio)
-        a.src = musica.audio
-        a.play()
+        if(musica != null){
+            var a = document.getElementById('audio')
+            var title = document.getElementById('title')
+
+            title.innerHTML = musica.nome
+
+            a.src = musica.audio
+            a.play()
+            a.onended = function(){
+                tocar(id+1)
+            }
+        }
     }
     
     
@@ -45,7 +51,7 @@ const SelectedPlaylist = props => {
                             </tbody>
                         </table>
                         <div className="playMusic">
-                            <h3 id="title">    </h3>
+                            <h3 id="title">...</h3>
                             <audio id="audio" preload="preload" controls>
                                 <source src="" />
                             </audio>

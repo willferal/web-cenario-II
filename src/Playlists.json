@@ -58,12 +58,12 @@
         "audio": "/assets/musics/monsterSA.mp3"
     },{
         "id": 1,
-        "nome":"musica2",
-        "audio": ""
+        "nome":"Capybara",
+        "audio": "/assets/musics/capybara.mp3"
     },{
         "id": 2,
-        "nome":"musica3",
-        "audio": ""
+        "nome":"Corona",
+        "audio": "/assets/musics/corona.mp3"
     }]
 }
 ]
