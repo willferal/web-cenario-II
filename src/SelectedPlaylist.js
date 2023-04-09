@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 import playlists from "./Playlists.json"
 
 const SelectedPlaylist = props => {
+    var musicId = null
+
     function tocar(id){
         
         var musica = null
@@ -13,8 +15,9 @@ const SelectedPlaylist = props => {
             if(music.id == id){
                 document.getElementById(music.nome).style.backgroundColor = "darkgray"
                 musica = music
+                musicId = id
             }else{
-                document.getElementById(music.nome).style.backgroundColor = "grey"
+                document.getElementById(music.nome).style.backgroundColor = "#2a3b5b"
             }
         }
         if(musica != null){
@@ -31,6 +34,13 @@ const SelectedPlaylist = props => {
         }
     }
     
+    function passa(i){
+        if(musicId != null){
+            musicId+=i
+            tocar(musicId)
+        }
+    }
+
     const {id} = useParams();
 
     const play = playlists.find(p => p.id == id);
@@ -61,9 +71,11 @@ const SelectedPlaylist = props => {
                         </table>
                         <div className="playMusic">
                             <h3 id="title">...</h3>
+                            <img className="butao" src="/assets/images/left.png" onClick={e => passa(-1)}></img>
                             <audio id="audio" preload="preload" controls>
                                 <source src="" />
                             </audio>
+                            <img className="butao" src="/assets/images/right.png" onClick={e => passa(1)}></img>
                         </div>
                         
                     </div>

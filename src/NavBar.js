@@ -24,8 +24,8 @@ const NavBar = props => {
                   <li><Link to="/Playlist">Playlist</Link></li>
               </ul>
               <ul class="nav navbar-nav navbar-right">
-                  <li><Link to="forms.html"><span class="glyphicon glyphicon-user"></span> Sign Up</Link></li>
-                  <li><Link to="login.html"><span class="glyphicon glyphicon-log-in"></span> Login</Link></li>
+                  <li><Link to="/Cadastro"><span class="glyphicon glyphicon-user"></span> Sign Up</Link></li>
+                  <li><Link to="/Login"><span class="glyphicon glyphicon-log-in"></span> Login</Link></li>
                   
               </ul>
           </div>

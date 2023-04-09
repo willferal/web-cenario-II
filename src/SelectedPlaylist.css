@@ -10,7 +10,7 @@
 
 }
 .music{
-    background-color: grey;
+    background-color: #2a3b5b;
     margin-top: 2px;
     margin-bottom: 2px;
     display: flex;
@@ -23,11 +23,10 @@
     vertical-align: middle;
     cursor: pointer;
 }
-.music:hover{
-    background-color: darkgray;
+
+h6{
+    color: beige;
 }
-
-
 
 .playButton{
     max-width: 30px;
@@ -35,6 +34,15 @@
     margin-left: 10px;
     margin-right: 20px;
 
+    
+}
+
+.butao{
+    margin-left: 20px;
+    margin-right: 20px;
+    height: 100px;
+    padding-bottom: 40px;
+    margin-top: -10px;
     
 }
 
@@ -50,4 +58,6 @@ h3{
 
 .playMusic{
     margin-top: 20px;
+    display: inline-block;
+    justify-content: center;
 }
