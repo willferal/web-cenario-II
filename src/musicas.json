@@ -1,0 +1,50 @@
+[{
+    "id": 0,
+    "nome":"musica1",
+    "audio": ""
+},{
+    "id": 1,
+    "nome":"musica2",
+    "audio": ""
+},{
+    "id": 2,
+    "nome":"musica3",
+    "audio": ""
+},{
+    "id": 3,
+    "nome":"musica4",
+    "audio": ""
+},{
+    "id": 4,
+    "nome":"musica5",
+    "audio": ""
+},{
+    "id": 5,
+    "nome":"musica6",
+    "audio": ""
+},{
+    "id": 6,
+    "nome":"Temple of Hate",
+    "audio": "/assets/musics/temple-of-hate.mp3"
+},{
+    "id": 7,
+    "nome":"Spread your fire",
+    "audio": ""
+},{
+    "id": 8,
+    "nome":"monterSA",
+    "audio": "/assets/musics/monsterSA.mp3"
+},{
+    "id": 9,
+    "nome":"Capybara",
+    "audio": "/assets/musics/capybara.mp3"
+},{
+    "id": 10,
+    "nome":"Corona",
+    "audio": "/assets/musics/corona.mp3"
+},
+{
+    "id": 11,
+    "nome":"Gdzie jest biały węgorz",
+    "audio":"/assets/musics/Gdzie.mp3"
+}]
