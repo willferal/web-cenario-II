@@ -1,11 +1,16 @@
 import React from "react";
+import { useRef } from 'react';
 import "./SelectedPlaylist.css";
 import { useParams } from "react-router-dom";
 import playlists from "./Playlists.json"
 
 const SelectedPlaylist = props => {
     var musicId = null // endereço dentro do vetor musicas da playlist
-
+    
+    const audio = useRef(null);
+    const title = useRef(null);
+    
+    
     function tocar(id) {
 
         var musica = null
@@ -21,20 +26,17 @@ const SelectedPlaylist = props => {
             }
         }
         if (musica != null) {
-            var a = document.getElementById('audio')
-            var title = document.getElementById('title')
+            title.current.innerHTML = musica.nome
 
-            title.innerHTML = musica.nome
-
-            a.src = musica.audio
-            a.play()
-            a.onended = function () {
-                passa(1)
+            audio.current.src = musica.audio
+            audio.current.play()
+            audio.current.onended = function () {
+                passar(1)
             }
         }
     }
 
-    function passa(i) {
+    function passar(i) {
 
         if (musicId != null) {
             var prox_musica = play.musicas[musicId + i]
@@ -75,12 +77,12 @@ const SelectedPlaylist = props => {
                         </tbody>
                     </table>
                     <div className="playMusic">
-                        <h3 id="title">...</h3>
-                        <img className="butao" src="/assets/images/left.png" onClick={e => passa(-1)}></img>
-                        <audio id="audio" preload="preload" controls>
+                        <h3 ref={title} id="title">...</h3>
+                        <img className="butao" src="/assets/images/left.png" onClick={e => passar(-1)}></img>
+                        <audio ref={audio} id="audio" preload="preload" controls>
                             <source src="" />
                         </audio>
-                        <img className="butao" src="/assets/images/right.png" onClick={e => passa(1)}></img>
+                        <img className="butao" src="/assets/images/right.png" onClick={e => passar(1)}></img>
                     </div>
 
                 </div>
