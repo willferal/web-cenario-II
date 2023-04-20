@@ -22,15 +22,15 @@
     "capa": "/assets/images/a7x.png",
     "musicas": [{
         "id": 0,
-        "nome":"musica1",
+        "nome":"musica4",
         "audio": ""
     },{
         "id": 1,
-        "nome":"musica2",
+        "nome":"musica5",
         "audio": ""
     },{
         "id": 2,
-        "nome":"musica3",
+        "nome":"musica6",
         "audio": ""
     }]
 },
@@ -53,20 +53,20 @@
     "nome": "aleatorio",
     "capa": "/assets/images/aleatorio.jpeg",
     "musicas": [{
-        "id": 0,
+        "id": 8,
         "nome":"monterSA",
         "audio": "/assets/musics/monsterSA.mp3"
     },{
-        "id": 1,
+        "id": 9,
         "nome":"Capybara",
         "audio": "/assets/musics/capybara.mp3"
     },{
-        "id": 2,
+        "id": 10,
         "nome":"Corona",
         "audio": "/assets/musics/corona.mp3"
     },
     {
-        "id": 3,
+        "id": 11,
         "nome":"Gdzie jest biały węgorz",
         "audio":"/assets/musics/Gdzie.mp3"
     }]
