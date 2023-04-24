@@ -1,13 +1,15 @@
 import './App.css';
 import {Routes, Route} from 'react-router-dom';
 
-import Home from './Home';
-import Faq from './Faq';
-import NavBar from './NavBar';
-import Playlist from './Playlist';
-import SelectedPlaylist from './SelectedPlaylist';
-import Login from './Login';
-import Cadastro from './Cadastro';
+import Home from './Componentes/Home/Home';
+import Faq from './Componentes/Faq/Faq';
+import NavBar from './Componentes/NavBar/NavBar';
+import Playlist from './Componentes/Playlist/Playlist';
+import SelectedPlaylist from './Componentes/SelectPlaylist/SelectedPlaylist';
+import Login from './Componentes/Login/Login';
+import Cadastro from './Componentes/Cadastro/Cadastro';
+import NewPlaylist from './Componentes/NewPLaylist/NewPlaylist';
+
 
 function App() {
   return (
@@ -20,6 +22,7 @@ function App() {
         <Route path='/SelectedPlaylist/:id' element={<SelectedPlaylist/>}></Route>
         <Route path='/Login' element={<Login/>}></Route>
         <Route path='/Cadastro' element={<Cadastro/>}></Route>
+        <Route path='/NewPlaylist' element={<NewPlaylist/>}></Route>
       </Routes>
     </div>
   );

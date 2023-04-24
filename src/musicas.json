@@ -1,15 +1,15 @@
 [{
     "id": 0,
-    "nome":"musica1",
-    "audio": ""
+    "nome":"Nego Drama",
+    "audio": "/assets/musics/Negro Drama.mp3"
 },{
     "id": 1,
-    "nome":"musica2",
-    "audio": ""
+    "nome":"Jesus Chorou",
+    "audio": "/assets/musics/Jesus Chorou.mp3"
 },{
     "id": 2,
-    "nome":"musica3",
-    "audio": ""
+    "nome":"Vida Loka",
+    "audio": "/assets/musics/Vida Loka.mp3"
 },{
     "id": 3,
     "nome":"musica4",
