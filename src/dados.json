@@ -1,0 +1,157 @@
+{
+    "playlists":[{
+        "id": 0,
+        "nome": "Racionais",
+        "capa": "/assets/images/racionais.jpg",
+        "musicas": [{
+            "id": 0,
+            "nome":"Nego Drama",
+            "audio": "/assets/musics/Negro Drama.mp3"
+        },{
+            "id": 1,
+            "nome":"Jesus CHorou",
+            "audio": "/assets/musics/Jesus Chorou.mp3"
+        },{
+            "id": 2,
+            "nome":"VIda Loka",
+            "audio": "/assets/musics/Vida Loka.mp3"
+        }]
+    },
+    {
+        "id": 1,
+        "nome": "a7x",
+        "capa": "/assets/images/a7x.png",
+        "musicas": [{
+            "id": 3,
+            "nome":"musica4",
+            "audio": ""
+        },{
+            "id": 4,
+            "nome":"musica5",
+            "audio": ""
+        },{
+            "id": 5,
+            "nome":"musica6",
+            "audio": ""
+        }]
+    },
+    {
+        "id": 2,
+        "nome": "angra",
+        "capa": "/assets/images/angra.png",
+        "musicas": [{
+            "id":6,
+            "nome":"Temple of Hate",
+            "audio": "/assets/musics/temple-of-hate.mp3"
+        },{
+            "id":7,
+            "nome":"Spread your fire",
+            "audio": ""
+        }]
+    },
+    {
+        "id": 3,
+        "nome": "aleatorio",
+        "capa": "/assets/images/aleatorio.jpeg",
+        "musicas": [{
+            "id": 8,
+            "nome":"monterSA",
+            "audio": "/assets/musics/monsterSA.mp3"
+        },{
+            "id": 9,
+            "nome":"Capybara",
+            "audio": "/assets/musics/capybara.mp3"
+        },{
+            "id": 10,
+            "nome":"Corona",
+            "audio": "/assets/musics/corona.mp3"
+        },
+        {
+            "id": 11,
+            "nome":"Gdzie jest biały węgorz",
+            "audio":"/assets/musics/Gdzie.mp3"
+        }]
+    }
+    ],
+    "musicas":[{
+        "id": 0,
+        "nome":"Nego Drama",
+        "audio": "/assets/musics/Negro Drama.mp3"
+    },{
+        "id": 1,
+        "nome":"Jesus Chorou",
+        "audio": "/assets/musics/Jesus Chorou.mp3"
+    },{
+        "id": 2,
+        "nome":"Vida Loka",
+        "audio": "/assets/musics/Vida Loka.mp3"
+    },{
+        "id": 3,
+        "nome":"musica4",
+        "audio": ""
+    },{
+        "id": 4,
+        "nome":"musica5",
+        "audio": ""
+    },{
+        "id": 5,
+        "nome":"musica6",
+        "audio": ""
+    },{
+        "id": 6,
+        "nome":"Temple of Hate",
+        "audio": "/assets/musics/temple-of-hate.mp3"
+    },{
+        "id": 7,
+        "nome":"Spread your fire",
+        "audio": "/assets/musics/Spread Your Fire.mp3"
+    },{
+        "id": 8,
+        "nome":"monterSA",
+        "audio": "/assets/musics/monsterSA.mp3"
+    },{
+        "id": 9,
+        "nome":"Capybara",
+        "audio": "/assets/musics/capybara.mp3"
+    },{
+        "id": 10,
+        "nome":"Corona",
+        "audio": "/assets/musics/corona.mp3"
+    },
+    {
+        "id": 11,
+        "nome":"Gdzie jest biały węgorz",
+        "audio":"/assets/musics/Gdzie.mp3"
+    },
+    {
+        "id": 12,
+        "nome":"Baka mitai",
+        "audio":"/assets/musics/Baka mitai.mp3"
+    },
+    {
+        "id": 13,
+        "nome":"Be ninja",
+        "audio":"/assets/musics/be ninja.mp3"
+    },
+    {
+        "id": 14,
+        "nome":"Rasputin",
+        "audio":"/assets/musics/Rasputin.mp3"
+    },
+    {
+        "id": 15,
+        "nome":"Stay with me",
+        "audio":"/assets/musics/Stay With Me.mp3"
+    },
+    {
+        "id": 16,
+        "nome":"The 7th Element",
+        "audio":"/assets/musics/The 7th Element.mp3"
+    },
+    {
+        "id": 17,
+        "nome":"Tokyo Bon",
+        "audio":"/assets/musics/Tokyo Bon.mp3"
+    }],
+    "usuarios":[]
+}
