@@ -2,15 +2,17 @@ import React from "react";
 import { useRef } from 'react';
 import "./NewPlaylist.css";
 import axios from "axios";
-import dados from "../../dados.json";
+import { useState } from "react";
 
 
 
 const NewPlaylist = props => {
-    var musicList = [] // playlist vazia
+    var musicList = new Array() // playlist vazia
     var input = useRef(null)
-    var musicas = dados.musicas;
     var showMusic;
+
+    const [musicas, setMusicas] = useState([]);
+    const [novaPlaylist, setNovaPlaylist] = useState("");
 
 
     function procurar() {
@@ -26,19 +28,11 @@ const NewPlaylist = props => {
 
     }
 
-    // axios.get("http://localhost:3001/musicas")//nao consigo carregar as infortmações no musicas
-    //     .then(function (response) {
-    //         console.log(response.data)
-    //         musicas = response.data
-    //         showMusic = musicas.map((m) =>
-    //             <tr>
-    //                 <div id={m.id} className="music" onClick={e => marcar(m.id)}>
-    //                     <img className="playButton" src="/assets/images/play.png"></img>
-    //                     <h6>{m.nome}</h6>
-    //                 </div>
-    //             </tr>
-    //         )
-    //     })
+    axios.get("http://localhost:3001/musicas")//nao consigo carregar as infortmações no musicas
+        .then(function (response) {
+            setMusicas(response.data);
+        }
+    )
 
     var showMusic = musicas.map((m) =>
         <tr id={"tr-" + m.id}>
@@ -73,9 +67,21 @@ const NewPlaylist = props => {
         console.log(musicList)
     }
 
-    function submit() {
-        console.log("hahah")
+    function submit(e) {
+        e.preventDefault();
+        axios.get(`http://localhost:3001/playlists?nome=${novaPlaylist}`)
+            .then(response => { 
+                if (response.data[0] != undefined) {
+                    alert("a playlist com o nome de" + novaPlaylist + "ja existe!");
+                    return;
+                } else if (musicList === []) {
+                    alert("Nao tenho musicas para criar essa playlist");
+                    return;
+                }
+            })
+
     }
+
 
     return (
         <div className="baixa container-fluid">
@@ -88,7 +94,7 @@ const NewPlaylist = props => {
                     <div className="row">
                         <form className="formPlay" onSubmit={submit}>
                             <h8 for="nomePLay">Nome da Playlist</h8><br />
-                            <input id="nomePLay" type="text" placeholder="Digite aqui."></input>
+                            <input id="nomePLay" type="text" onChange={e => setNovaPlaylist(e.target.value)} placeholder="Digite aqui."></input>
                             <input id="inputPlay" type="submit" value="Criar"></input>
                         </form>
 
