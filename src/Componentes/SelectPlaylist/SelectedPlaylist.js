@@ -2,28 +2,35 @@ import React from "react";
 import { useRef } from 'react';
 import "./SelectedPlaylist.css";
 import { useParams } from "react-router-dom";
-import playlists from "../../Playlists.json"
+import dados from "../../dados.json";
 import Player from "../Player/Player";
+import axios from "axios";
+import { useState } from "react";
 
 const SelectedPlaylist = props => {
-    var musicId = null // endereço dentro do vetor musicas da playlist
-
+    var musicId = null; // endereço dentro do vetor musicas da playlist
     const audio = useRef(null);
     const title = useRef(null);
-
     const { id } = useParams();
+    var playMusic;
+    var play = dados.playlists.find(p => p.id === id)
 
-    const play = playlists.find(p => p.id == id);
-    const playMusic = play.musicas.map((m) =>
 
+    // const [play, setPlay] = useState("")
+    // axios.get(`http://localhost:3001/playlists?id=${id}`)
+    //     .then(function (response) {
+    //         setPlay(response.data);
+    //     })
+
+    playMusic = play.musicas.map((m) =>
         <tr>
             <div id={m.nome} className="music" onClick={e => tocar(m.id)}>
                 <img className="playButton" src="/assets/images/play.png"></img>
                 <h6>{m.nome}</h6>
             </div>
         </tr>
-
     )
+
 
     function tocar(id) {
 
@@ -80,7 +87,7 @@ const SelectedPlaylist = props => {
 
                 </div>
             </div>
-            {Player(audio,title,passar)}
+            {Player(audio, title, passar)}
         </div>
 
     )
