@@ -2,15 +2,18 @@ import React from "react";
 import { useRef } from 'react';
 import "./NewPlaylist.css";
 import axios from "axios";
-import dados from "../../dados.json";
+import { useState } from "react";
 
-
+//obs: definir a logica de setar o id e a o album
 
 const NewPlaylist = props => {
-    var musicList = [] // playlist vazia
-    var input = useRef(null)
-    var musicas = dados.musicas;
+    //var musicList = [] // playlist vazia
+    var input = useRef(null);
     var showMusic;
+
+    const [musicas, setMusicas] = useState([]);
+    const [novaPlaylist, setNovaPlaylist] = useState("");
+    const [musicList, setMusicList] = useState([]);
 
 
     function procurar() {
@@ -26,24 +29,16 @@ const NewPlaylist = props => {
 
     }
 
-    // axios.get("http://localhost:3001/musicas")//nao consigo carregar as infortmações no musicas
-    //     .then(function (response) {
-    //         console.log(response.data)
-    //         musicas = response.data
-    //         showMusic = musicas.map((m) =>
-    //             <tr>
-    //                 <div id={m.id} className="music" onClick={e => marcar(m.id)}>
-    //                     <img className="playButton" src="/assets/images/play.png"></img>
-    //                     <h6>{m.nome}</h6>
-    //                 </div>
-    //             </tr>
-    //         )
-    //     })
+    axios.get("http://localhost:3001/musicas")
+        .then(function (response) {
+            setMusicas(response.data);
+        }
+        )
 
-    var showMusic = musicas.map((m) =>
+    showMusic = musicas.map((m) =>
         <tr id={"tr-" + m.id}>
             <div id={m.id} className="music" onClick={e => marcar(m.id)}>
-                <img className="playButton" src="/assets/images/play.png"></img>
+                <img className="playButton" src="/assets/images/play.png" alt=""></img>
                 <h4 id={"n-" + m.id}>{m.nome}</h4>
                 <h8 id={"a-" + m.id} className="autor">{m.autor}</h8>
             </div>
@@ -51,31 +46,50 @@ const NewPlaylist = props => {
     )
 
     function marcar(id) {
-        var inside = false
+        // var inside = false
         var m = document.getElementById(id)
         var nm = document.getElementById("n-" + id)
         var am = document.getElementById("a-" + id)
-        for (let i = 0; i < musicList.length; i++) {
-            if (musicList[i].id == id) {
-                musicList.splice(i, 1)
-                inside = true
-                m.style.backgroundColor = "#2a3b5b"
-                nm.style.color = "beige"
-                am.style.color = "beige"
-            }
-        }
-        if (!inside) {
-            musicList.push(musicas.find(m => m.id == id))
+
+        var music = musicList.find(x => x?.id === id)
+        if (!music) {
+            setMusicList([...musicList, musicas.find(x => x.id === id)])
             m.style.backgroundColor = "beige"
             nm.style.color = "#1B263B"
             am.style.color = "#1B263B"
+        } else {
+            setMusicList(musicList.filter(x => x.id !== id));
+            m.style.backgroundColor = "#2a3b5b"
+            nm.style.color = "beige"
+            am.style.color = "beige"
         }
-        console.log(musicList)
     }
 
-    function submit() {
-        console.log("hahah")
+    function submit(e) {
+        e.preventDefault();
+        console.log(musicList);
+        axios.get(`http://localhost:3001/playlists?nome=${novaPlaylist}`)
+            .then(response => {
+                if (response.data[0] !== undefined) {
+                    alert("a playlist com o nome de " + novaPlaylist + " ja existe!");
+                    return;
+                } else if (musicList.length === 0) {
+                    alert("Nao tenho musicas para criar essa playlist");
+                    return;
+                } else if (novaPlaylist === "") {
+                    alert("Digite um nome para sua playlist");
+                    return;
+                }
+                
+                axios.post(`http://localhost:3001/playlists`,{
+                    nome:novaPlaylist,
+                    capa:"/assets/images/logo_colorido_semFundo.png",
+                    musicas:musicList
+                })
+            })
+
     }
+
 
     return (
         <div className="baixa container-fluid">
@@ -88,7 +102,7 @@ const NewPlaylist = props => {
                     <div className="row">
                         <form className="formPlay" onSubmit={submit}>
                             <h8 for="nomePLay">Nome da Playlist</h8><br />
-                            <input id="nomePLay" type="text" placeholder="Digite aqui."></input>
+                            <input id="nomePLay" type="text" onChange={e => setNovaPlaylist(e.target.value)} placeholder="Digite aqui."></input>
                             <input id="inputPlay" type="submit" value="Criar"></input>
                         </form>
 

@@ -1,11 +1,22 @@
 import React from "react";
 import "./Playlist.css"
 import { Link } from "react-router-dom";
-import playlists from "../../Playlists.json"
+import axios from "axios";
+import { useState } from "react";
 
 const Playlist = props => {
 
-    const list_playlists = playlists.map(
+    var list_playlists;
+
+    const [playlists, setPlaylists] = useState([])
+
+    axios.get("http://localhost:3001/playlists")
+        .then(function (response) {
+            setPlaylists(response.data);
+        }
+        )
+
+    list_playlists = playlists.map(
         (p) =>
             <li>
                 <Link to={"/SelectedPlaylist/" + p.id}>

@@ -3,9 +3,6 @@ import './Player.css';
 
 
 const Player = (audio, title, pass) => {
-    function opa() {
-        console.log()
-    }
 
     return (
         <div class="footer navbar-fixed-bottom">
