@@ -6,9 +6,14 @@ import { useParams } from "react-router-dom";
 import Player from "../Player/Player";
 import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
+
+
+
+
 
 const SelectedPlaylist = props => {
-    
+    const navigate = useNavigate();
     const audio = useRef(null);
     const title = useRef(null);
     const { id } = useParams();
@@ -35,7 +40,13 @@ const SelectedPlaylist = props => {
     )
 
     
-
+    function del(){
+        var r = window.confirm("tem certeza que quer excluir?");
+        if(r){
+            navigate('/playlist', { replace: true });
+            axios.delete(`http://localhost:3001/playlists/${id}`)
+        }
+    }
     
     
 
@@ -44,26 +55,31 @@ const SelectedPlaylist = props => {
         var compMusica = document.getElementById(id)
         
         if (compMusica) {
-            if(compMusic)
+            if(compMusic){
                 compMusic.style.backgroundColor = "#2a3b5b"
-            
+            }
             setPrevID(id)
             setCompMusic(compMusica)
             compMusica.style.backgroundColor = "darkgray"
             musica = musicas[id]
             title.current.innerHTML = musica.nome
-
             audio.current.src = musica.audio
             audio.current.play()
-            audio.current.onended = function () {
-                passar(1)
+            audio.current.onended = function(){
+                passar(1,id)
             }
         }
     }
 
-    function passar(i) {
-            if(prevID+i >= 0 || prevID<musicas.length)
+    function passar(i=1,idMusic=null) {
+        console.log(prevID)
+            if(idMusic !== null){
+                setPrevID(idMusic)
+                document.getElementById(idMusic).style.backgroundColor = "#2a3b5b"
+                tocar(idMusic + i)
+            }else if(prevID+i >= 0 || prevID<musicas.length){
                 tocar(prevID + i)
+            }
     }
 
     return (
@@ -73,6 +89,7 @@ const SelectedPlaylist = props => {
                 <div className="row">
                     <img className="playlists" src={play.capa} alt={play.nome}></img>
                     <h3>{play.nome}</h3>
+                    <button onClick={del}>deletar</button>
                 </div>
                 <div className="row">
                     <table className="album-list">

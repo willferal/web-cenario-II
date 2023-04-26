@@ -3,11 +3,11 @@ import { useRef } from 'react';
 import "./NewPlaylist.css";
 import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-//obs: definir a logica de setar o id e a o album
 
 const NewPlaylist = props => {
-    //var musicList = [] // playlist vazia
+    const navigate = useNavigate();
     var input = useRef(null);
     var showMusic;
 
@@ -86,6 +86,7 @@ const NewPlaylist = props => {
                     capa:"/assets/images/logo_colorido_semFundo.png",
                     musicas:musicList
                 })
+                navigate('/playlist', { replace: true });
             })
 
     }
