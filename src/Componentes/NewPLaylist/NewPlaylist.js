@@ -3,11 +3,11 @@ import { useRef } from 'react';
 import "./NewPlaylist.css";
 import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-//obs: definir a logica de setar o id e a o album
 
 const NewPlaylist = props => {
-    //var musicList = [] // playlist vazia
+    const navigate = useNavigate();
     var input = useRef(null);
     var showMusic;
 
@@ -76,17 +76,14 @@ const NewPlaylist = props => {
                 } else if (musicList.length === 0) {
                     alert("Nao tenho musicas para criar essa playlist");
                     return;
-                } else if (novaPlaylist === "") {
-                    alert("Digite um nome para sua playlist");
-                    return;
                 }
                 
                 axios.post(`http://localhost:3001/playlists`,{
-                    id:"11",
                     nome:novaPlaylist,
                     capa:"/assets/images/logo_colorido_semFundo.png",
                     musicas:musicList
                 })
+                navigate('/playlist', { replace: true });
             })
 
     }
@@ -103,7 +100,7 @@ const NewPlaylist = props => {
                     <div className="row">
                         <form className="formPlay" onSubmit={submit}>
                             <h8 for="nomePLay">Nome da Playlist</h8><br />
-                            <input id="nomePLay" type="text" onChange={e => setNovaPlaylist(e.target.value)} placeholder="Digite aqui."></input>
+                            <input required id="nomePLay" type="text" onChange={e => setNovaPlaylist(e.target.value)} placeholder="Digite aqui."></input>
                             <input id="inputPlay" type="submit" value="Criar"></input>
                         </form>
 

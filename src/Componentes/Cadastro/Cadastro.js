@@ -2,41 +2,51 @@ import React from "react";
 import { Link } from 'react-router-dom';
 import './Cadastro.css';
 import { useState } from 'react';
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Cadastro() {
-    const [userName, setUsername] = useState('');
-    const [lastName, setLastName] = useState('');
-    const [email, setEmail] = useState('');
-    const [numCelular, setNumCelular] = useState('');
-    const [passWord, setPassword] = useState('');
-    const [passWordSecond, setPasswordSecond] = useState('');
-    /*
-    const [generoM, setGeneroM] = useState('M');
-    const [generoF, setGeneroF] = useState('F');
-    const [generoO, setGeneroO] = useState('O');
-    */
-    const [userArray, setUserArray] = useState([]);
-  
-    const handleCadastro = (e) => {
-      e.preventDefault();
-      const newUser = { userName, lastName, email, numCelular, passWord, passWordSecond};
-      setUserArray([...userArray, newUser]);
-      setUsername('');
-      setLastName('');
-      setEmail('');
-      setNumCelular('');
-      setPassword('');
-      setPasswordSecond('');
-      /*
-    generoM, generoF, generoO
-      setGeneroM('');
-      setGeneroF('');
-      setGeneroO('');
-      */
-      console.log(userArray);
-    };
-    return(
-        <div className="container">
+  const navigate = useNavigate();
+  const [userName, setUsername] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [numCelular, setNumCelular] = useState('');
+  const [passWord, setPassword] = useState('');
+  const [passWordSecond, setPasswordSecond] = useState('');
+  // const [genero, setGenero] = useState('');
+
+  const handleCadastro = (e) => {
+    e.preventDefault();
+    const newUser = { userName, lastName, email, numCelular, passWord, passWordSecond };
+    axios.get(`http://localhost:3001/usuarios?email=${email}`).then(response => {
+      if (response.data[0]) {
+        alert("email já cadastrado!")
+        return;
+      }
+      axios.get(`http://localhost:3001/usuarios?numCelular=${numCelular}`).then(response => {
+        if (response.data[0]) {
+          alert("numero de celular já cadastrado!")
+          return;
+        }
+        if (passWord !== passWordSecond) {
+          alert("senhas Não batem!")
+          setPasswordSecond('')
+          return
+        }
+        axios.post(`http://localhost:3001/usuarios`, {
+          userName: userName,
+          lastName: lastName,
+          email: email,
+          numCelular: numCelular,
+          passWord: passWord,
+        })
+        navigate('/login', { replace: true });
+      })
+    })
+
+  };
+  return (
+    <div className="container">
       <div className="form-image">
         <img src="assets/img//undraw_shopping_re_3wst.svg" alt="" />
       </div>
@@ -139,17 +149,17 @@ function Cadastro() {
 
             <div className="gender-group">
               <div className="gender-input">
-                <input id="female" type="radio" name="gender" /*value={generoM} onChange={(e) => setGeneroM(e.target.value)}*//>
+                <input id="female" type="radio" name="gender" /*value={generoM} onChange={(e) => setGeneroM(e.target.value)}*/ />
                 <label htmlFor="female">Masculino</label>
               </div>
 
               <div className="gender-input">
-                <input id="male" type="radio" name="gender"/* value={generoF} onChange={(e) => setGeneroF(e.target.value)}*//>
+                <input id="male" type="radio" name="gender"/* value={generoF} onChange={(e) => setGeneroF(e.target.value)}*/ />
                 <label htmlFor="male">Feminino</label>
               </div>
 
               <div className="gender-input">
-                <input id="others" type="radio" name="gender"/* value={generoO} onChange={(e) => setGeneroO(e.target.value)}*//>
+                <input id="others" type="radio" name="gender"/* value={generoO} onChange={(e) => setGeneroO(e.target.value)}*/ />
                 <label htmlFor="others">Outros</label>
               </div>
             </div>
@@ -157,13 +167,13 @@ function Cadastro() {
 
           <div className="continue-button">
             <button>
-                Continuar
+              Continuar
             </button>
           </div>
         </form>
       </div>
     </div>
-      )
+  )
 }
 
 
