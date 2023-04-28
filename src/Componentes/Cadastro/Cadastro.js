@@ -33,13 +33,17 @@ function Cadastro() {
           setPasswordSecond('')
           return
         }
-        axios.post(`http://localhost:3001/usuarios`, {
-          userName: userName,
-          lastName: lastName,
-          email: email,
-          numCelular: numCelular,
-          passWord: passWord,
+        axios.get(`http://localhost:3001/playlists`).then(response => {
+          axios.post(`http://localhost:3001/usuarios`, {
+            userName: userName,
+            lastName: lastName,
+            email: email,
+            numCelular: numCelular,
+            password: passWord,
+            playlists: response.data
+          })
         })
+
         navigate('/login', { replace: true });
       })
     })

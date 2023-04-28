@@ -1,19 +1,32 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import "./Login.css"
 
-const TelaLogin = (props) => {
+const TelaLogin = ({setUsuario}) => {
+  const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [userArray, setUserArray] = useState([]);
 
   const handleLogin = (e) => {
     e.preventDefault();
-    const newUser = { username, password };
-    setUserArray([...userArray, newUser]);
-    setUsername('');
-    setPassword('');
-    console.log(userArray);
+    axios.get(`http://localhost:3001/usuarios?email=${username}`).then(response =>{
+      var user = response.data[0]
+      if(!user){
+        alert("Email não cadastrado!")
+        setUsername('')
+        setPassword('')
+        return
+      }
+      if(password !== user.password){
+        alert("Senha incorreta!")
+        setPassword('')
+        return
+      }
+      setUsuario(user)
+      navigate('/playlist', { replace: true });
+    })
   };
 
   return (
@@ -37,7 +50,7 @@ const TelaLogin = (props) => {
               type="text"
               name="username"
               id="username"
-              placeholder="Enter Your Username"
+              placeholder="Enter Your Email"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />

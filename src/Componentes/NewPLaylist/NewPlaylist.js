@@ -6,7 +6,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 
-const NewPlaylist = props => {
+const NewPlaylist = ({usuario}) => {
     const navigate = useNavigate();
     var input = useRef(null);
     var showMusic;
@@ -68,21 +68,31 @@ const NewPlaylist = props => {
     function submit(e) {
         e.preventDefault();
         console.log(musicList);
-        axios.get(`http://localhost:3001/playlists?nome=${novaPlaylist}`)
+        axios.get(`http://localhost:3001/usuarios/${usuario.id}`)
             .then(response => {
-                if (response.data[0] !== undefined) {
+                var user = response.data
+                var isNameUsed = user.playlists.find(x => x.name === novaPlaylist)
+                if (isNameUsed) {
                     alert("a playlist com o nome de " + novaPlaylist + " ja existe!");
                     return;
                 } else if (musicList.length === 0) {
                     alert("Nao tenho musicas para criar essa playlist");
                     return;
                 }
-                
-                axios.post(`http://localhost:3001/playlists`,{
-                    nome:novaPlaylist,
-                    capa:"/assets/images/logo_colorido_semFundo.png",
-                    musicas:musicList
-                })
+                var nPLaylist = {id: user.playlists.length,
+                                 nome: novaPlaylist, 
+                                 capa: "/assets/images/logo_colorido_semFundo.png",
+                                 musicas: musicList
+                                }
+                axios.put(`http://localhost:3001/usuarios/${usuario.id}`,{
+                    id: user.id,
+                    userName: user.userName,
+                    lastName: user.lastName,
+                    email: user.email,
+                    numCelular: user.numCelular,
+                    password: user.password,
+                    playlists: [...user.playlists,nPLaylist]
+                    })
                 navigate('/playlist', { replace: true });
             })
 

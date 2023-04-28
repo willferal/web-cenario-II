@@ -12,7 +12,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 
-const SelectedPlaylist = props => {
+const SelectedPlaylist = ({ usuario }) => {
     const navigate = useNavigate();
     const audio = useRef(null);
     const title = useRef(null);
@@ -20,17 +20,29 @@ const SelectedPlaylist = props => {
     var playMusic;
     // var play = dados.playlists.find(p => p.id === id)
 
-    const [musicas , setMusicas] = useState([])
+    const [musicas, setMusicas] = useState([])
     const [play, setPlay] = useState([])
     const [prevID, setPrevID] = useState();
     const [compMusic, setCompMusic] = useState();
-    axios.get(`http://localhost:3001/playlists?id=${id}`)
-        .then(function (response) {
-            setPlay(response.data[0]);
-            setMusicas(response.data[0].musicas)
-        })
 
-    playMusic = musicas.map((m,index) =>
+    if (usuario) {
+        axios.get(`http://localhost:3001/usuarios/${usuario.id}`).then(response => {
+            var user = response.data
+            let playlist = user.playlists[id]
+            console.log(user.playlists)
+            setPlay(playlist)
+            setMusicas(playlist.musicas)
+        })
+    } else {
+        axios.get(`http://localhost:3001/playlists?id=${id}`)
+            .then(function (response) {
+                setPlay(response.data[0]);
+                setMusicas(response.data[0].musicas)
+            })
+    }
+
+
+    playMusic = musicas.map((m, index) =>
         <tr>
             <div id={index} className="music" onClick={e => tocar(index)}>
                 <img className="playButton" src="/assets/images/play.png" alt=""></img>
@@ -39,23 +51,35 @@ const SelectedPlaylist = props => {
         </tr>
     )
 
-    
-    function del(){
+
+    function del() {
         var r = window.confirm("tem certeza que quer excluir?");
-        if(r){
+        if (r) {
             navigate('/playlist', { replace: true });
-            axios.delete(`http://localhost:3001/playlists/${id}`)
+            axios.get(`http://localhost:3001/usuarios/${usuario.id}`).then(response => {
+                var user =  response.data
+                var playlists = user.playlists.filter(x => x.id !== play.id)
+                axios.put(`http://localhost:3001/usuarios/${usuario.id}`,{
+                    id: user.id,
+                    userName: user.userName,
+                    lastName: user.lastName,
+                    email: user.email,
+                    numCelular: user.numCelular,
+                    password: user.password,
+                    playlists: playlists
+                    })
+            })
         }
     }
-    
-    
+
+
 
     function tocar(id) {
         var musica;
         var compMusica = document.getElementById(id)
-        
+
         if (compMusica) {
-            if(compMusic){
+            if (compMusic) {
                 compMusic.style.backgroundColor = "#2a3b5b"
             }
             setPrevID(id)
@@ -65,21 +89,21 @@ const SelectedPlaylist = props => {
             title.current.innerHTML = musica.nome
             audio.current.src = musica.audio
             audio.current.play()
-            audio.current.onended = function(){
-                passar(1,id)
+            audio.current.onended = function () {
+                passar(1, id)
             }
         }
     }
 
-    function passar(i=1,idMusic=null) {
+    function passar(i = 1, idMusic = null) {
         console.log(prevID)
-            if(idMusic !== null){
-                setPrevID(idMusic)
-                document.getElementById(idMusic).style.backgroundColor = "#2a3b5b"
-                tocar(idMusic + i)
-            }else if(prevID+i >= 0 || prevID<musicas.length){
-                tocar(prevID + i)
-            }
+        if (idMusic !== null) {
+            setPrevID(idMusic)
+            document.getElementById(idMusic).style.backgroundColor = "#2a3b5b"
+            tocar(idMusic + i)
+        } else if (prevID + i >= 0 || prevID < musicas.length) {
+            tocar(prevID + i)
+        }
     }
 
     return (
@@ -89,7 +113,7 @@ const SelectedPlaylist = props => {
                 <div className="row">
                     <img className="playlists" src={play.capa} alt={play.nome}></img>
                     <h3>{play.nome}</h3>
-                    <button onClick={del}>deletar</button>
+                    {usuario && <button onClick={del}>deletar</button>}
                 </div>
                 <div className="row">
                     <table className="album-list">
