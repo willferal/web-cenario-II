@@ -24,9 +24,9 @@ const Playlist = ({ usuario }) => {
 
 
     list_playlists = playlists.map(
-        (p) =>
+        (p,index) =>
             <li>
-                <Link to={"/SelectedPlaylist/" + p.id}>
+                <Link to={"/SelectedPlaylist/" + index}>
                     <div className="play well well-sm">
                         <img className="playlists" src={p.capa} alt={p.nome} />
                         <h4>{p.nome}</h4>

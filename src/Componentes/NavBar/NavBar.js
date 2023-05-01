@@ -8,8 +8,8 @@ const NavBar = ({ usuario, setUsuario }) => {
 
     function logout(){
         setUsuario();
-        navigate('/login', { replace: true });
     }
+
 
     return (
         <nav class="navbar navbar-inverse ">
@@ -38,8 +38,8 @@ const NavBar = ({ usuario, setUsuario }) => {
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">{usuario.userName}
                                 <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a onClick={logout}>Logout</a></li>
-                                <li><a>Edit</a></li>
+                                <li><Link to={'/Login'}><a onClick={logout}>Logout</a></Link></li>
+                                <li><Link to={'/EditProfile'}><a >Edit</a></Link></li>
                             </ul>
                         </li>}
 

@@ -214,17 +214,35 @@
   "usuarios": [
     {
       "id": 1,
-      "userName": "opa",
+      "userName": "opa123",
       "lastName": "opa",
       "email": "opa@gmail.com",
       "numCelular": "123",
       "password": "opa",
       "playlists": [
         {
-          "id": 0,
-          "nome": "Racionais",
-          "capa": "/assets/images/racionais.jpg",
+          "id": 2,
+          "nome": "bia",
+          "capa": "/assets/images/logo_colorido_semFundo.png",
           "musicas": [
+            {
+              "id": 12,
+              "nome": "Baka mitai",
+              "audio": "/assets/musics/Baka mitai.mp3",
+              "autor": "Yakuza OST"
+            },
+            {
+              "id": 15,
+              "nome": "Stay with me",
+              "audio": "/assets/musics/Stay With Me.mp3",
+              "autor": "Miki Matsubara"
+            },
+            {
+              "id": 17,
+              "nome": "Tokyo Bon",
+              "audio": "/assets/musics/Tokyo Bon.mp3",
+              "autor": "Namewee"
+            },
             {
               "id": 0,
               "nome": "Nego Drama",
@@ -238,66 +256,29 @@
               "autor": "Racionais"
             },
             {
-              "id": 2,
-              "nome": "Vida Loka",
-              "audio": "/assets/musics/Vida Loka.mp3",
-              "autor": "Racionais"
-            }
-          ]
-        },
-        {
-          "id": 2,
-          "nome": "angra",
-          "capa": "/assets/images/angra.png",
-          "musicas": [
-            {
-              "id": 6,
-              "nome": "Temple of Hate",
-              "audio": "/assets/musics/temple-of-hate.mp3",
-              "autor": "Angra"
-            },
-            {
-              "id": 7,
-              "nome": "Spread your fire",
-              "audio": "/assets/musics/Spread Your Fire.mp3",
-              "autor": "Angra"
+              "id": 8,
+              "nome": "monterSA",
+              "audio": "/assets/musics/monsterSA.mp3",
+              "autor": "monsterSA"
             }
           ]
         },
         {
           "id": 3,
-          "nome": "aleatorio",
-          "capa": "/assets/images/aleatorio.jpeg",
+          "nome": "1",
+          "capa": "/assets/images/logo_colorido_semFundo.png",
           "musicas": [
             {
-              "id": 8,
-              "nome": "monterSA",
-              "audio": "/assets/musics/monsterSA.mp3",
-              "autor": "monsterSA"
-            },
-            {
-              "id": 9,
-              "nome": "Capybara",
-              "audio": "/assets/musics/capybara.mp3",
-              "autor": "apy"
-            },
-            {
-              "id": 10,
-              "nome": "Corona",
-              "audio": "/assets/musics/corona.mp3",
-              "autor": "Hatsune Miku"
-            },
-            {
-              "id": 11,
-              "nome": "Gdzie jest biały węgorz",
-              "audio": "/assets/musics/Gdzie.mp3",
-              "autor": "Zejście"
+              "id": 13,
+              "nome": "Be ninja",
+              "audio": "/assets/musics/be ninja.mp3",
+              "autor": "Jennifer Murphy"
             }
           ]
         },
         {
           "id": 4,
-          "nome": "teste",
+          "nome": "1",
           "capa": "/assets/images/logo_colorido_semFundo.png",
           "musicas": [
             {
@@ -307,28 +288,22 @@
               "autor": "Racionais"
             },
             {
-              "id": 6,
-              "nome": "Temple of Hate",
-              "audio": "/assets/musics/temple-of-hate.mp3",
-              "autor": "Angra"
+              "id": 5,
+              "nome": "musica6",
+              "audio": "",
+              "autor": "..."
             },
             {
               "id": 7,
               "nome": "Spread your fire",
               "audio": "/assets/musics/Spread Your Fire.mp3",
               "autor": "Angra"
-            },
-            {
-              "id": 8,
-              "nome": "monterSA",
-              "audio": "/assets/musics/monsterSA.mp3",
-              "autor": "monsterSA"
             }
           ]
         },
         {
-          "id": 5,
-          "nome": "kkk",
+          "id": 1,
+          "nome": "2",
           "capa": "/assets/images/logo_colorido_semFundo.png",
           "musicas": [
             {
@@ -342,6 +317,18 @@
               "nome": "Jesus Chorou",
               "audio": "/assets/musics/Jesus Chorou.mp3",
               "autor": "Racionais"
+            },
+            {
+              "id": 15,
+              "nome": "Stay with me",
+              "audio": "/assets/musics/Stay With Me.mp3",
+              "autor": "Miki Matsubara"
+            },
+            {
+              "id": 14,
+              "nome": "Rasputin",
+              "audio": "/assets/musics/Rasputin.mp3",
+              "autor": "Boney M"
             }
           ]
         }
@@ -433,6 +420,110 @@
               "nome": "Be ninja",
               "audio": "/assets/musics/be ninja.mp3",
               "autor": "Jennifer Murphy"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "userName": "pedro",
+      "lastName": "henrique",
+      "email": "pedrohenrique@gmail.com",
+      "numCelular": "919100",
+      "password": "pedro",
+      "playlists": [
+        {
+          "id": 0,
+          "nome": "Racionais",
+          "capa": "/assets/images/racionais.jpg",
+          "musicas": [
+            {
+              "id": 0,
+              "nome": "Nego Drama",
+              "audio": "/assets/musics/Negro Drama.mp3",
+              "autor": "Racionais"
+            },
+            {
+              "id": 1,
+              "nome": "Jesus Chorou",
+              "audio": "/assets/musics/Jesus Chorou.mp3",
+              "autor": "Racionais"
+            },
+            {
+              "id": 2,
+              "nome": "Vida Loka",
+              "audio": "/assets/musics/Vida Loka.mp3",
+              "autor": "Racionais"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "nome": "angra",
+          "capa": "/assets/images/angra.png",
+          "musicas": [
+            {
+              "id": 6,
+              "nome": "Temple of Hate",
+              "audio": "/assets/musics/temple-of-hate.mp3",
+              "autor": "Angra"
+            },
+            {
+              "id": 7,
+              "nome": "Spread your fire",
+              "audio": "/assets/musics/Spread Your Fire.mp3",
+              "autor": "Angra"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "nome": "aaaaaaa",
+          "capa": "/assets/images/logo_colorido_semFundo.png",
+          "musicas": [
+            {
+              "id": 0,
+              "nome": "Nego Drama",
+              "audio": "/assets/musics/Negro Drama.mp3",
+              "autor": "Racionais"
+            },
+            {
+              "id": 1,
+              "nome": "Jesus Chorou",
+              "audio": "/assets/musics/Jesus Chorou.mp3",
+              "autor": "Racionais"
+            },
+            {
+              "id": 2,
+              "nome": "Vida Loka",
+              "audio": "/assets/musics/Vida Loka.mp3",
+              "autor": "Racionais"
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "nome": "ooo",
+          "capa": "/assets/images/logo_colorido_semFundo.png",
+          "musicas": [
+            {
+              "id": 4,
+              "nome": "musica5",
+              "audio": "",
+              "autor": "..."
+            },
+            {
+              "id": 6,
+              "nome": "Temple of Hate",
+              "audio": "/assets/musics/temple-of-hate.mp3",
+              "autor": "Angra"
+            },
+            {
+              "id": 7,
+              "nome": "Spread your fire",
+              "audio": "/assets/musics/Spread Your Fire.mp3",
+              "autor": "Angra"
             }
           ]
         }

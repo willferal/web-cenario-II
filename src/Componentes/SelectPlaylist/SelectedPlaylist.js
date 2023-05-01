@@ -12,7 +12,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 
-const SelectedPlaylist = ({ usuario }) => {
+const SelectedPlaylist = ({ usuario , setUsuario }) => {
     const navigate = useNavigate();
     const audio = useRef(null);
     const title = useRef(null);
@@ -29,7 +29,6 @@ const SelectedPlaylist = ({ usuario }) => {
         axios.get(`http://localhost:3001/usuarios/${usuario.id}`).then(response => {
             var user = response.data
             let playlist = user.playlists[id]
-            console.log(user.playlists)
             setPlay(playlist)
             setMusicas(playlist.musicas)
         })
@@ -55,11 +54,10 @@ const SelectedPlaylist = ({ usuario }) => {
     function del() {
         var r = window.confirm("tem certeza que quer excluir?");
         if (r) {
-            navigate('/playlist', { replace: true });
             axios.get(`http://localhost:3001/usuarios/${usuario.id}`).then(response => {
-                var user =  response.data
+                var user = response.data
                 var playlists = user.playlists.filter(x => x.id !== play.id)
-                axios.put(`http://localhost:3001/usuarios/${usuario.id}`,{
+                var updatedUser = {
                     id: user.id,
                     userName: user.userName,
                     lastName: user.lastName,
@@ -67,11 +65,17 @@ const SelectedPlaylist = ({ usuario }) => {
                     numCelular: user.numCelular,
                     password: user.password,
                     playlists: playlists
-                    })
+                }
+                setUsuario(updatedUser)
+                axios.put(`http://localhost:3001/usuarios/${usuario.id}`, updatedUser)
             })
+            navigate('/playlist', { replace: true });
         }
     }
 
+    function edit() {
+        navigate('/EditPlaylist/'+id, { replace: true });
+    }
 
 
     function tocar(id) {
@@ -96,7 +100,7 @@ const SelectedPlaylist = ({ usuario }) => {
     }
 
     function passar(i = 1, idMusic = null) {
-        console.log(prevID)
+
         if (idMusic !== null) {
             setPrevID(idMusic)
             document.getElementById(idMusic).style.backgroundColor = "#2a3b5b"
@@ -113,7 +117,10 @@ const SelectedPlaylist = ({ usuario }) => {
                 <div className="row">
                     <img className="playlists" src={play.capa} alt={play.nome}></img>
                     <h3>{play.nome}</h3>
-                    {usuario && <button onClick={del}>deletar</button>}
+                    {usuario && <div className="row">
+                        <button className="botaoDelEdit" onClick={del}>deletar</button>
+                        <button className="botaoDelEdit" onClick={edit}>edit</button>
+                    </div>}
                 </div>
                 <div className="row">
                     <table className="album-list">

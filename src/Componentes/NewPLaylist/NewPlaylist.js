@@ -6,7 +6,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 
-const NewPlaylist = ({usuario}) => {
+const NewPlaylist = ({ usuario , setUsuario}) => {
     const navigate = useNavigate();
     var input = useRef(null);
     var showMusic;
@@ -79,20 +79,24 @@ const NewPlaylist = ({usuario}) => {
                     alert("Nao tenho musicas para criar essa playlist");
                     return;
                 }
-                var nPLaylist = {id: user.playlists.length,
-                                 nome: novaPlaylist, 
-                                 capa: "/assets/images/logo_colorido_semFundo.png",
-                                 musicas: musicList
-                                }
-                axios.put(`http://localhost:3001/usuarios/${usuario.id}`,{
+                var nPLaylist = {
+                    id: user.playlists.length,
+                    nome: novaPlaylist,
+                    capa: "/assets/images/logo_colorido_semFundo.png",
+                    musicas: musicList
+                }
+
+                var updatedUser = {
                     id: user.id,
                     userName: user.userName,
                     lastName: user.lastName,
                     email: user.email,
                     numCelular: user.numCelular,
                     password: user.password,
-                    playlists: [...user.playlists,nPLaylist]
-                    })
+                    playlists: [...user.playlists, nPLaylist]
+                }
+                setUsuario(updatedUser)
+                axios.put(`http://localhost:3001/usuarios/${usuario.id}`, updatedUser)
                 navigate('/playlist', { replace: true });
             })
 

@@ -49,5 +49,16 @@ h6{
 h3{
     color: beige;
 }
+.botaoDelEdit{
+    color: beige;
+    background: #2a3b5b;
+    font-size: larger;
+    margin: 10px 10px 10px 10px;
+    width: 90px;
+    height: 40px;
+    border-radius: 10px; 
+}
+
+
 
 

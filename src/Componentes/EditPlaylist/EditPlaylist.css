@@ -1,0 +1,21 @@
+.submitEdit{
+    color: beige;
+    background: #2a3b5b;
+    font-size: larger;
+    margin: 10px 10px 10px 10px;
+    width: 90px;
+    height: 40px;
+    border-radius: 10px; 
+}
+
+.submitEdit:hover{
+    color: #2a3b5b;
+    background: beige;
+    font-size: larger;
+    margin: 10px 10px 10px 10px;
+    width: 90px;
+    height: 40px;
+    border-radius: 10px; 
+    font-weight: bolder;
+    transition-duration: 0.25s;
+}

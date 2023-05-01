@@ -10,7 +10,8 @@ import SelectedPlaylist from './Componentes/SelectPlaylist/SelectedPlaylist';
 import Login from './Componentes/Login/Login';
 import Cadastro from './Componentes/Cadastro/Cadastro';
 import NewPlaylist from './Componentes/NewPLaylist/NewPlaylist';
-
+import EditProfile from './Componentes/EditProfile/EditProfile';
+import EditPlaylist from './Componentes/EditPlaylist/EditPlaylist';
 
 function App() {
 
@@ -25,10 +26,12 @@ function App() {
         <Route path='/' element={<Home />}></Route>
         <Route path='/Faq' element={<Faq />}></Route>
         <Route path='/Playlist' element={<Playlist usuario={usuarioLogado} />}></Route>
-        <Route path='/SelectedPlaylist/:id' element={<SelectedPlaylist usuario={usuarioLogado} />}></Route>
+        <Route path='/SelectedPlaylist/:id' element={<SelectedPlaylist usuario={usuarioLogado} setUsuario={setUsuarioLogado}/>}></Route>
         <Route path='/Login' element={<Login setUsuario={setUsuarioLogado} />}></Route>
         <Route path='/Cadastro' element={<Cadastro />}></Route>
-        <Route path='/NewPlaylist' element={<NewPlaylist usuario={usuarioLogado} />}></Route>
+        <Route path='/NewPlaylist' element={<NewPlaylist usuario={usuarioLogado} setUsuario={setUsuarioLogado}/>}></Route>
+        <Route path='/EditProfile' element={<EditProfile usuario={usuarioLogado} setUsuario={setUsuarioLogado}></EditProfile>}></Route>
+        <Route path='/EditPlaylist/:id' element={<EditPlaylist usuario={usuarioLogado} setUsuario={setUsuarioLogado}></EditPlaylist>}></Route>
       </Routes>
     </div>
   );

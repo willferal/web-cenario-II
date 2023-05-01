@@ -1,0 +1,53 @@
+.backButton {
+    color: beige;
+    background: #2a3b5b;
+    font-size: larger;
+    margin: 10px 10px 10px 10px;
+    width: 90px;
+    height: fit-content;
+    border-radius: 10px;
+    display: block;
+    justify-content: center;
+}
+
+.rowVoltar{
+    margin-bottom: 30px;
+}
+
+.editForm{
+    width: 90%;
+    justify-content: center;
+    display: inline-block;
+}
+
+.texInputEdit{
+    color: beige;
+    background-color: #2a3b5b;
+    font-size: large;
+    padding-left: 10px;
+    border-radius: 5px;
+}
+
+.editForm h5{
+    color: beige;
+}
+
+.texInputEdit:disabled{
+    background-color: #222f49;
+}
+
+.editForm input[type="submit"]{
+    color: beige;
+    background: #2a3b5b;
+    font-size: larger;
+    margin: 10px 10px 10px 10px;
+    width: 90px;
+    height: 40px;
+    border-radius: 10px;
+}
+
+.editForm input[type="submit"]:hover{
+    color: #1B263B;
+    background: beige;
+
+}
