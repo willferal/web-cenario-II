@@ -10,21 +10,22 @@ const Playlist = ({ usuario }) => {
 
     const [playlists, setPlaylists] = useState([])
 
-    if (usuario) {
-        axios.get(`http://localhost:3001/usuarios/${usuario.id}`)
-            .then(response => {
-                setPlaylists(response.data.playlists)
-            })
-    } else {
-        axios.get("http://localhost:3001/playlists")
-            .then(function (response) {
-                setPlaylists(response.data);
-        })
+    if (playlists.length == 0) {
+        if (usuario) {
+            axios.get(`http://localhost:3001/usuarios/${usuario.id}`)
+                .then(response => {
+                    setPlaylists(response.data.playlists)
+                })
+        } else {
+            axios.get("http://localhost:3001/playlists")
+                .then(function (response) {
+                    setPlaylists(response.data);
+                })
+        }
     }
 
-
     list_playlists = playlists.map(
-        (p,index) =>
+        (p, index) =>
             <li>
                 <Link to={"/SelectedPlaylist/" + index}>
                     <div className="play well well-sm">

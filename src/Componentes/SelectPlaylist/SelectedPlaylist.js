@@ -6,13 +6,13 @@ import { useParams } from "react-router-dom";
 import Player from "../Player/Player";
 import axios from "axios";
 import { useState } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate , Link} from 'react-router-dom';
 
 
 
 
 
-const SelectedPlaylist = ({ usuario , setUsuario }) => {
+const SelectedPlaylist = ({ usuario, setUsuario }) => {
     const navigate = useNavigate();
     const audio = useRef(null);
     const title = useRef(null);
@@ -25,20 +25,23 @@ const SelectedPlaylist = ({ usuario , setUsuario }) => {
     const [prevID, setPrevID] = useState();
     const [compMusic, setCompMusic] = useState();
 
-    if (usuario) {
-        axios.get(`http://localhost:3001/usuarios/${usuario.id}`).then(response => {
-            var user = response.data
-            let playlist = user.playlists[id]
-            setPlay(playlist)
-            setMusicas(playlist.musicas)
-        })
-    } else {
-        axios.get(`http://localhost:3001/playlists?id=${id}`)
-            .then(function (response) {
-                setPlay(response.data[0]);
-                setMusicas(response.data[0].musicas)
+    if (musicas.length == 0) {
+        if (usuario) {
+            axios.get(`http://localhost:3001/usuarios/${usuario.id}`).then(response => {
+                var user = response.data
+                let playlist = user.playlists[id]
+                setPlay(playlist)
+                setMusicas(playlist.musicas)
             })
+        } else {
+            axios.get(`http://localhost:3001/playlists?id=${id}`)
+                .then(function (response) {
+                    setPlay(response.data[0]);
+                    setMusicas(response.data[0].musicas)
+                })
+        }
     }
+
 
 
     playMusic = musicas.map((m, index) =>
@@ -74,7 +77,7 @@ const SelectedPlaylist = ({ usuario , setUsuario }) => {
     }
 
     function edit() {
-        navigate('/EditPlaylist/'+id, { replace: true });
+        navigate('/EditPlaylist/' + id, { replace: true });
     }
 
 
@@ -114,6 +117,7 @@ const SelectedPlaylist = ({ usuario , setUsuario }) => {
         <div className="baixa container-fluid">
             <div className="col-sm-2"></div>
             <div className="interface col-sm-8 well well-md">
+            <div className="row"><Link className="backButton" to={"/Playlist"}>voltar</Link></div>
                 <div className="row">
                     <img className="playlists" src={play.capa} alt={play.nome}></img>
                     <h3>{play.nome}</h3>

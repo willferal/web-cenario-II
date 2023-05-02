@@ -3,10 +3,10 @@ import { useRef } from 'react';
 import "./NewPlaylist.css";
 import axios from "axios";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 
-const NewPlaylist = ({ usuario , setUsuario}) => {
+const NewPlaylist = ({ usuario, setUsuario }) => {
     const navigate = useNavigate();
     var input = useRef(null);
     var showMusic;
@@ -108,6 +108,7 @@ const NewPlaylist = ({ usuario , setUsuario}) => {
             <div className="row">
                 <div className="col-sm-2"></div>
                 <div className="interface col-sm-8 well well-md">
+                    <div className="row"><Link className="backButton" to={"/PLaylist"}>voltar</Link></div>
                     <div className="row">
                         <h3>Criar Playlist</h3>
                     </div>
